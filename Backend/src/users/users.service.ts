@@ -15,14 +15,17 @@ export class UsersService {
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
+  // Create User
   async create(createUserDto: CreateUserDto) {
     return await this.userRepository.save(createUserDto);
   }
 
+  // Get All User
   async findAll(): Promise<User[]> {
     return await this.userRepository.find();
   }
 
+  // Get User By Id
   async findOne(id: number): Promise<User> {
     const findById = await this.userRepository.findOne({ where: { id: id } });
     if (!findById)
@@ -33,8 +36,10 @@ export class UsersService {
     return findById;
   }
 
+
+  // Update User
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
-    const getUser = await this.userRepository.findOneBy({ id: id });
+    const getUser = await this.userRepository.findOne({ where: { id: id } });
     if (!getUser)
       throw new HttpException(
         `User with id ${id} does not exist`,
@@ -45,9 +50,10 @@ export class UsersService {
     return await this.userRepository.save(updateUser);
   }
 
+
+  // Delete User
   async remove(id: number) {
-    const findById = await this.userRepository.findOneBy({
-      id: id,
+    const findById = await this.userRepository.findOne({where:{id:id}
     });
 
     if (!findById) {
@@ -57,6 +63,8 @@ export class UsersService {
       );
     }
 
-    return await this.userRepository.delete(id);
+    const deleteUser = await this.userRepository.delete(id);
+
+    return deleteUser
   }
 }

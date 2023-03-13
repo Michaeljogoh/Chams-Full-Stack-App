@@ -5,13 +5,13 @@ export class User  extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({type: 'varchar'})
+    @Column()
     firstname: string;
 
-    @Column({type: 'varchar'})
+    @Column()
     lastname:  string;
 
-    @Column({type: 'varchar'})
+    @Column()
     email: string
 
     @Column({default : true})
