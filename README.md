@@ -21,6 +21,22 @@ $ npm run start:dev
 $ npm run start:prod
 
 ```
+## example.env
+
+```
+PORT = <Number>
+
+DB_HOST = <String
+
+DB_PORT = <Number>
+
+DB_USERNAME = <String>
+
+DB_PASSWORD = <String>
+
+DB_NAME = <String>
+
+```
 
 ## Running the Client app (React.js)
 
